@@ -1,4 +1,3 @@
-import React from 'react'
 
 function Button(children: string | undefined) {
   return (
