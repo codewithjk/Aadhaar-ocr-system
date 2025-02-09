@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import Tesseract from "tesseract.js";
 import "./App.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Allowed file types and max size (5MB)
 const fileTypes = ["JPG", "PNG", "GIF", "JPEG"];
@@ -23,6 +24,7 @@ const App: React.FC = () => {
   const [parsedData, setParsedData] = useState<ParsedData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [retry, setRetry] = useState<boolean>(false);
+  const {logout, user} = useAuth0()
 
   // Handle file selection and validation
   const handleChange = (file: File) => {
@@ -126,6 +128,12 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
+      <div
+    className='bg-gray-300 text-black border-2 h-fit w-fit p-4 rounded-sm cursor-pointer mt-4'
+    onClick={() => logout()}>
+    Logout
+   </div>
+      Welcome, {user?.email}
       <h1>Aadhaar Card OCR</h1>
 
       {/* File Upload */}
