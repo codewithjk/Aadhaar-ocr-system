@@ -24,7 +24,8 @@ const App: React.FC = () => {
   const [parsedData, setParsedData] = useState<ParsedData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [retry, setRetry] = useState<boolean>(false);
-  const {logout, user} = useAuth0()
+  const { logout, user } = useAuth0()
+  console.log("from home",user)
 
   // Handle file selection and validation
   const handleChange = (file: File) => {

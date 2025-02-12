@@ -9,9 +9,9 @@ import Login from './Login.tsx'
 
 
 
-console.log(import.meta.env.VITE_REACT_APP_AUTH0_DOMAIN);
+console.log(import.meta.env.VITE_REACT_APP_AUTH0_DOMAIN,import.meta.env.VITE_REACT_APP_CLIENT_ID);
 
-
+console.log(window.location.origin+"/home")
 
 createRoot(document.getElementById('root')!).render(
   
@@ -20,17 +20,15 @@ createRoot(document.getElementById('root')!).render(
   domain={import.meta.env.VITE_REACT_APP_AUTH0_DOMAIN as string}
   clientId={import.meta.env.VITE_REACT_APP_CLIENT_ID as string}
   authorizationParams={{
-   redirect_uri: window.location.origin,
+   redirect_uri: window.location.origin+"/home",
       }}>
       <BrowserRouter>
       <Routes>
     <Route index path='/' element={<Login />} />
-    <Route
-     path='/home'
-     element={<ProtectedRoute children={App} />}
-    />
+    <Route path="/home" element={<App />} />
+
    </Routes>
    </BrowserRouter>
       </Auth0Provider>
-  </StrictMode>,
+  </StrictMode>
 )

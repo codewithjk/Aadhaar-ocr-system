@@ -3,19 +3,21 @@ import {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
- const {loginWithRedirect, user, getAccessTokenSilently} = useAuth0()
- const navigate = useNavigate();
+ const {loginWithRedirect, user, } = useAuth0()
+    const navigate = useNavigate();
+    
+    console.log(user)
 
- useEffect(() => {
-  if (user) {
-   (async () => {
-    const token = await getAccessTokenSilently();
-    navigate('/home');
-   })();
-  }
- }, [user]);
+    // useEffect(() => {
+    //     if (user) {
+    //       getAccessTokenSilently().then(() => {
+    //         navigate('/home');
+    //       });
+    //     }
+    //   }, [user, getAccessTokenSilently, navigate]);
+      
     const handleLogin = () => {
-        console.log("hllos",loginWithRedirect)
+        console.log("handling login",loginWithRedirect)
         loginWithRedirect()
     }
 
