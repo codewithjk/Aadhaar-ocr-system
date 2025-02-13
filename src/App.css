@@ -77,6 +77,20 @@
 .parsed-data li {
   margin-bottom: 5px;
 }
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
 
 
 @keyframes logo-spin {
