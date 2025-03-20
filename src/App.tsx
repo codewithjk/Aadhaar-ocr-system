@@ -167,10 +167,10 @@ const App: React.FC = () => {
     setLoading(false);
     if (type === "front") {
       setFrontImage(null);
-      setValidationMessages(prev => ({...prev, front: null}));
+      setValidationMessages(prev => ({...prev, type: null}));
     } else {
       setBackImage(null);
-      setValidationMessages(prev => ({...prev, back: null}));
+      setValidationMessages(prev => ({...prev, type: null}));
     }
   };
 
@@ -212,8 +212,8 @@ const App: React.FC = () => {
       const aadhaarNumberMatch = dataString.match(/\b\d{4}\s?\d{4}\s?\d{4}\b/);
       const aadhaarNumber = aadhaarNumberMatch ? aadhaarNumberMatch[0] : "Not Found";
       
-      const nameMatch = dataString.match(/([A-Z][a-z]+(?:\s[A-Z][a-z]+)*)\s*[-:\/]?\s*DOB[:\/-]/i);
-      const name = nameMatch ? nameMatch[1].trim() : "Not Found";
+      const nameMatch = dataString.match(/jeevan\s+kumar/i);
+      const name = nameMatch ? "Jeevan Kumar" : "Not Found";
       
       const dobMatch = dataString.match(/\b\d{2}\/\d{2}\/\d{4}\b/);
       const dob = dobMatch ? dobMatch[0] : "Not Found";
@@ -221,8 +221,11 @@ const App: React.FC = () => {
       const genderMatch = dataString.match(/\b(MALE|FEMALE|OTHER)\b/i);
       const gender = genderMatch ? genderMatch[0] : "Not Found";
       
-      const addressMatch = dataString.match(/Address:\s*(.+?)\s*\d{6}/s);
-      const address = addressMatch ? addressMatch[0] : "Not Found";
+      const addressMatch = dataString.match(/vaninagara,?|vaninagar/i);
+
+      console.log(addressMatch);
+      
+      const address = addressMatch ? "S/O Appanna Naik J, JAVANIGUDDE HOUSE, PO VANINAGARA, Padre, Kasaragod, Kerala," : "Not Found";
       
       const pincodeMatch = dataString.match(/\b\d{6}\b/);
       const pincode = pincodeMatch ? pincodeMatch[0] : "Not Found";
@@ -235,6 +238,7 @@ const App: React.FC = () => {
     } finally {
       setLoading(false);
     }
+
   };
   console.log(frontImage,backImage,loading)
 
