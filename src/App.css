@@ -67,6 +67,7 @@
 .parsed-data {
   margin-top: 20px;
   text-align: left;
+  max-width: 500px;
 }
 
 .parsed-data ul {

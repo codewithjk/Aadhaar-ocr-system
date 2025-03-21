@@ -18,10 +18,10 @@ type ParsedData = {
   pincode: string;
 };
 
-// Define image types for front and back
+
 type ImageType = "front" | "back" | null;
 interface ValidationMessages {
-  type: string | null; // or [key: string]: string | undefined if some keys might not be set
+  type: string | null; 
   message:string | null
 }
 
@@ -79,7 +79,7 @@ const App: React.FC = () => {
         return false;
       }
       
-      // Validate if the image is front or back as claimed
+
       if (type === "front") {
         const isFront = frontIdentifiers.some(identifier => 
           text.includes(identifier.toLowerCase())
@@ -151,20 +151,21 @@ const App: React.FC = () => {
       return;
     }
     
-    // Update state based on the selected type
+
     if (type === "front") {
       setFrontImage(file);
-      // Validate that it's actually an Aadhaar front image
+
       await validateImage(file, "front");
     } else {
       setBackImage(file);
-      // Validate that it's actually an Aadhaar back image
+
       await validateImage(file, "back");
     }
   };
 
   const handleRemoveImage = (type: ImageType) => {
     setLoading(false);
+    setParsedData(null)
     if (type === "front") {
       setFrontImage(null);
       setValidationMessages(prev => ({...prev, type: null}));
